@@ -36,8 +36,13 @@ export const App = () => {
     }
   }, [searchQuery, page]);
 
-  const handleFormSubmit = searchQuery => {
-    setSearchQuery(searchQuery);
+  const handleFormSubmit = newQuery => {
+    if (newQuery === searchQuery) {
+      scroll.scrollToTop();
+      return;
+    };
+
+    setSearchQuery(newQuery);
     setPage(1);
     setPictures([]);
   }
